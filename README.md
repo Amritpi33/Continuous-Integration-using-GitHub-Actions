@@ -1,91 +1,88 @@
-# Continuous-Integration-using-GitHub-Actions
-Proof-of-concept demonstrating CI using GitHub Actions to build and test a Node.js app, then containerize and publish it to Docker Hub. Includes workflow automation, Dockerfile, and CI/CD validation steps.
-# CPNT-302 – Continuous Integration using GitHub Actions
+# CPNT-302 – Continuous Integration with GitHub Actions
 
-## 📌 Overview
+##  Overview
 This project demonstrates **Continuous Integration (CI)** using **GitHub Actions**.  
-The goal is to automate the build and test process of a simple Node.js web application, and upon success, containerize the app and publish it to **Docker Hub**.  
+The workflow automates building and testing a Node.js web app, then containerizes it with Docker and publishes the image to **Docker Hub**.  
 
-Key Highlights:
+Key Features:
 - Node.js application containerized with Docker  
-- GitHub Actions workflow to automate build, test, and image publishing  
-- Secure usage of GitHub Actions Secrets for Docker Hub credentials  
-- Final container image pulled and run successfully from Docker Hub  
+- Automated builds/tests triggered by GitHub commits  
+- Secure credential storage using **GitHub Actions Secrets**  
+- Successful deployment and validation of containerized app  
 
 ---
 
-## ⚙️ Equipment and Materials
-- Windows PC with VMware Workstation 16/17  
-- Ubuntu Linux 22.04 VM  
+##  Equipment & Tools
+- Windows PC with VMware Workstation  
+- Ubuntu 22.04 VM  
+- Git & GitHub account  
 - Node.js runtime + npm  
-- Docker Engine  
-- Git and GitHub account  
-- Docker Hub account (with access token for automation)  
+- Docker Engine & Docker Hub account  
 
 ---
 
-## 🛠️ Procedure
+##  Implementation Steps
 
-### Part A – Create Node.js Web App
-1. Installed Node.js and npm on Ubuntu VM.  
-2. Created `app.js` and Dockerfile for Node.js app.  
-3. Verified app locally with `npm install`, `npm test`, and `npm start`.  
-4. Initialized Git repo and pushed code to GitHub.  
-5. Created Docker Hub repository and generated an **access token** for GitHub Actions.  
-
-📷 *Screenshots:*  
-- [Implementation Step 1](implementation-step-1.png)  
-- [Implementation Step 2](implementation-step-2.png)  
-- [Implementation Step 3](implementation-step-3.png)  
-- [Implementation Step 4](implementation-step-4.png)  
+### **1. Push Code to GitHub**
+- Created Node.js project and pushed repo to GitHub.  
+📷 ![Push Code](push%20code%20to%20github.png)
 
 ---
 
-### Part B – GitHub Actions Workflow
-1. Added a workflow file under `.github/workflows/main.yml`.  
-2. Configured **Job 1**: Build & Test Node.js App (triggered on push).  
-3. Configured **Job 2**: Build & Publish Docker Image to Docker Hub (runs only if Job 1 succeeds).  
-4. Stored Docker Hub username + token as **GitHub Actions Secrets**.  
-5. Verified successful workflow execution.  
-
-📷 *Screenshots:*  
-- [Workflow Files](mariadb%20and%20nodeapp.png)  
-- [NodeApp Running in Browser](nodeapp%20running%20in%20browser.png)  
+### **2. Build & Test Locally**
+- Ran `npm install`, `npm test`, and `npm start` to validate app locally.  
+📷 ![npm Tested](npm%20tested%20and%20running.png)
 
 ---
 
-### Part C – Demonstration
-- **Demo 1:** Pushed commit to GitHub → workflow triggered.  
-- **Demo 2:** Verified GitHub Actions Secrets for Docker Hub credentials.  
-- **Demo 3:** GitHub Actions build & test job executed.  
-- **Demo 4:** Workflow built and published image to Docker Hub.  
-- **Demo 5:** Pulled and ran image from Docker Hub → web app accessible at `http://localhost:3000`.  
+### **3. Configure GitHub Actions**
+- Created `.github/workflows/main.yml`  
+- Job 1: Build & Test Node.js app  
+- Job 2: Build & Push Docker image (runs only if Job 1 succeeds).  
+
+📷 ![Build & Push Docker Image](build%20and%20push%20docker%20image.png)
 
 ---
 
-## 📊 Marking Criteria (Self-Evaluation)
-- Demo 1: Push Code → ✅  
-- Demo 2: GitHub Actions Secrets → ✅  
-- Demo 3: Workflow Trigger → ✅  
-- Demo 4: Build & Test Job → ✅  
-- Demo 5: Publish to Docker Hub → ✅  
-- Demo 6: Run Container & Access Web App → ✅  
+### **4. Verify Workflow & Publish**
+- Verified both jobs in GitHub Actions succeeded.  
+- Docker image published to Docker Hub repository.  
+
+📷 ![Removed Local Container](removed%20local%20container%20image.png)
+
+---
+
+### **5. Run Containerized Web App**
+- Pulled image from Docker Hub.  
+- Ran container and accessed web app at `http://localhost:3000`.  
+
+📷 ![Web Browser Access](web%20browser%20to%20access%20the%20web%20application.png)
+
+---
+
+##  Marking Criteria (Self-Evaluation)
+- Demo 1: Push Code to GitHub  
+-  Demo 2: GitHub Actions Secrets configured  
+-  Demo 3: Workflow Triggered successfully  
+-  Demo 4: Build & Test Job succeeded  
+-  Demo 5: Image published to Docker Hub  
+-  Demo 6: Container pulled & app accessed  
 
 **Total:** /100  
 
 ---
 
-## 📚 Resources
+##  Resources
 - [Containerize a Node.js application](https://docs.docker.com/language/nodejs/containerize/)  
-- [GitHub Actions Docs – Node.js Build & Test](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs)  
+- [GitHub Actions Docs – Node.js](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs)  
 - [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)  
-- [GitHub Git Cheat Sheet](https://training.github.com/downloads/github-git-cheat-sheet/)  
+- [Git Cheat Sheet](https://training.github.com/downloads/github-git-cheat-sheet/)  
 
 ---
 
-## 🙋 Lessons Learned
-- Setting up a **CI pipeline** with GitHub Actions improved automation.  
-- Learned how to securely handle credentials using **GitHub Secrets**.  
-- Understood job dependencies (build/test before publish).  
-- Successfully integrated **Node.js + Docker + GitHub Actions + Docker Hub** for a full CI flow.  
+##  Lessons Learned
+- Automated workflows reduce manual testing and publishing steps.  
+- GitHub Secrets ensure **secure handling** of Docker Hub credentials.  
+- Understood CI pipelines and job dependencies in GitHub Actions.  
+- Integrated **Node.js + Docker + GitHub Actions + Docker Hub** end-to-end.  
 
